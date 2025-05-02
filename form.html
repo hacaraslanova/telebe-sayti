@@ -1,0 +1,54 @@
+!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Kursa Müraciət Forması</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Kursa Müraciət Forması</h1>
+    <form action="/submit" method="post">
+        <!-- Ad və Soyad -->
+        <label for="fullname">Ad və Soyad:</label>
+        <input type="text" id="fullname" name="fullname" required><br><br>
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <!-- Telefon Nömrəsi -->
+        <label for="phone">Telefon Nömrəsi:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        <label for="id-card">Şəxsiyyət vəsiqəsini yükləyin(pdf və jpg):</label>
+        <input type="file" id="id-card" name="id-card" accept=".pdf,.jpg,.jpeg" required> <br><br>
+
+        <!-- Kurs Seçimi -->
+        <label for="course">Kursa Müraciət:</label>
+        <select id="course" name="course" required>
+            <option value="HTML & CSS">HTML & CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+
+        </select><br><br>
+        <p id="course-description"></p>
+
+        <!-- Göndərmək düyməsi -->
+        <input type="submit" value="Müraciət Et">
+    </form>
+    <script>
+        document.getElementById('course').addEventListener('change'),function(){
+            const courseInfo={
+                'HTML&CSS':'HTML və CSS,veb sehifelerin dizaynini ve strukturu yaratmaga komey edir.',
+                'JavaScript':'JavaScript,veb sehifelere interaktivlik ve dinamik xususiyyetler elave edir.',
+                'Java':'Java,boyuk miqyasli tetbiqler ucun istifade olunan bir proqramlasdirma dilidir.',
+                'Python':'Python,elmi hesablama veb inkisafinda genis istifade olunur.'
+
+            };
+            const selectedCourse=this.value;
+            document.getElementById('course-description').textContent=courseInfo[selectedCourse]
+        };
+    </script>
+</body>
+</html>
